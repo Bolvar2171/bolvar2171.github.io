@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mimic Forge</title>
+<meta name="description" content="Mimic Forge makes editor tools for Unity.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #212526;
+    --panel: #2a2f31;
+    --edge: #3a4144;
+    --text: #e9e3d3;
+    --muted: #a8aba6;
+    --fire: #f08a24;
+    --steel: #6f8fb0;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 Inter, system-ui, sans-serif;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  .pixel { font-family: Silkscreen, monospace; letter-spacing: .04em; }
+  img.px { image-rendering: pixelated; }
+
+  header { padding: 32px 0 8px; }
+  header img { width: 100%; height: auto; display: block; border: 2px solid var(--edge); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  .intro { font-size: 19px; max-width: 660px; margin: 32px 0 48px; }
+  .intro p { margin: 0 0 12px; }
+
+  h2 { font-size: 20px; font-weight: 400; color: var(--muted); margin: 0 0 16px; }
+
+  .product {
+    background: var(--panel);
+    border: 2px solid var(--edge);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+  }
+  .product img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; border-right: 2px solid var(--edge); }
+  .product .body { padding: 20px 24px; }
+  .product h3 { margin: 0 0 4px; font-size: 22px; }
+  .tag {
+    display: inline-block; font-size: 12px; padding: 2px 8px; margin-bottom: 12px;
+    border: 2px solid var(--steel); color: var(--steel);
+  }
+  .tag.soon { border-color: var(--fire); color: var(--fire); }
+  .product p { margin: 0 0 10px; color: var(--muted); }
+  .product ul { margin: 0; padding-left: 18px; color: var(--muted); }
+  .product.text { grid-template-columns: 1fr; }
+
+  .support { margin: 48px 0; }
+  .support p { margin: 0; }
+  a { color: var(--fire); }
+
+  footer { color: var(--muted); font-size: 14px; padding: 24px 0 48px; border-top: 2px solid var(--edge); }
+
+  @media (max-width: 640px) {
+    header { padding-top: 16px; }
+    .product { grid-template-columns: 1fr; }
+    .product img { border-right: 0; border-bottom: 2px solid var(--edge); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 class="sr">Mimic Forge: Unity tools, forged with care</h1>
+    <img class="px" src="img/forge.png" width="1200" height="800" alt="Mimic Forge, Unity tools forged with care. A pixel-art forge with an anvil that has a mouth full of fire.">
+  </header>
+
+  <section class="intro" id="intro">
+    <p>Mimic Forge is me, Jeff, and an anvil that bites.</p>
+    <p>My first tool, Localization QA, finds the German label that runs off its button, the Japanese character your font lacks and the line nobody translated, before release. Procedural Motion, a spring-based animation toolkit, is next.</p>
+  </section>
+
+  <section>
+    <h2 class="pixel">Tools</h2>
+
+    <article class="product">
+      <img src="img/localization-qa.png" alt="A German button label, Einstellungen und Barrierefreiheit, running out of its button, outlined in red">
+      <div class="body">
+        <h3>Localization QA</h3>
+        <span class="tag soon pixel">Coming soon</span>
+        <p>Finds the localization bugs players post screenshots of: text that won't fit its box, letters your font can't show and strings nobody translated.</p>
+        <p>It checks TextMeshPro, legacy Text and UI Toolkit, reads Unity Localization string tables, and runs from the command line on build servers.</p>
+      </div>
+    </article>
+
+    <article class="product text">
+      <div class="body">
+        <h3>Procedural Motion</h3>
+        <span class="tag pixel">In development</span>
+        <p>Spring-based motion for Unity: UI, cameras and characters that follow, overshoot and settle naturally, tuned with a live response graph in the Inspector.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="support">
+    <h2 class="pixel">Support</h2>
+    <p>Email <a href="mailto:mimicforge.support@gmail.com">mimicforge.support@gmail.com</a> with your Unity version and what happened. You'll get a reply within two working days.</p>
+  </section>
+
+  <footer>Mimic Forge. Unity is a trademark of Unity Technologies; Mimic Forge isn't affiliated with Unity.</footer>
+</div>
+</body>
+</html>
