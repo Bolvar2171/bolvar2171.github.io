@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Procedural Motion demo | Mimic Forge</title>
+<meta name="description" content="Play the Procedural Motion demo for Unity in your browser.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #212526;
+    --panel: #2a2f31;
+    --edge: #3a4144;
+    --text: #e9e3d3;
+    --muted: #a8aba6;
+    --fire: #f08a24;
+    --steel: #6f8fb0;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 Inter, system-ui, sans-serif;
+  }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 20px; }
+  .pixel { font-family: Silkscreen, monospace; letter-spacing: .04em; }
+  a { color: var(--fire); }
+
+  nav { padding: 24px 0 8px; font-size: 15px; }
+  h1 { font-size: 28px; font-weight: 400; margin: 8px 0 16px; }
+
+  /* 16:9, full width up to 1280 px; the height follows the width. */
+  .stage {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    aspect-ratio: 16 / 9;
+    background: var(--panel);
+    outline: 2px solid var(--edge); /* an outline, not a border, so the canvas itself stays exactly 16:9 */
+  }
+  .stage canvas { display: block; width: 100%; height: 100%; }
+
+  .loading {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    color: var(--muted); font-size: 14px;
+  }
+  .bar { width: min(320px, 60%); height: 12px; border: 2px solid var(--edge); background: var(--bg); }
+  .bar div { height: 100%; width: 0; background: var(--fire); }
+  .error { color: var(--fire); max-width: 80%; text-align: center; }
+
+  .help { margin: 16px 0 4px; }
+  .note { color: var(--muted); margin: 0 0 48px; }
+
+  footer { color: var(--muted); font-size: 14px; padding: 24px 0 48px; border-top: 2px solid var(--edge); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="../../">&larr; Mimic Forge</a></nav>
+
+  <h1 class="pixel">Procedural Motion demo</h1>
+
+  <div class="stage">
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <div class="loading" id="loading">
+      <div class="bar"><div id="progress"></div></div>
+      <span id="status">Loading…</span>
+    </div>
+  </div>
+
+  <p class="help">Click the buttons on screen, click the floor to move the pet's target, and hold a chest to squash it.</p>
+  <p class="note">Procedural Motion is coming soon to the Unity Asset Store.</p>
+
+  <footer>Mimic Forge. Unity is a trademark of Unity Technologies; Mimic Forge isn't affiliated with Unity.</footer>
+</div>
+
+<script>
+  const canvas = document.getElementById("unity-canvas");
+  const loading = document.getElementById("loading");
+  const progress = document.getElementById("progress");
+  const status = document.getElementById("status");
+
+  const config = {
+    arguments: [],
+    dataUrl: "Build/Build.data.unityweb",
+    frameworkUrl: "Build/Build.framework.js.unityweb",
+    codeUrl: "Build/Build.wasm.unityweb",
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "Mimic Forge",
+    productName: "Procedural Motion demo",
+    productVersion: "1.0",
+    showBanner: (message, type) => {
+      if (type === "error") { status.textContent = message; status.className = "error"; loading.style.display = "flex"; }
+      else console.log(message);
+    },
+  };
+
+  const script = document.createElement("script");
+  script.src = "Build/Build.loader.js";
+  script.onload = () => {
+    createUnityInstance(canvas, config, p => { progress.style.width = Math.round(p * 100) + "%"; })
+      .then(() => { loading.style.display = "none"; })
+      .catch(message => { status.textContent = "The demo couldn't start: " + message; status.className = "error"; });
+  };
+  script.onerror = () => { status.textContent = "The demo couldn't load."; status.className = "error"; };
+  document.body.appendChild(script);
+</script>
+</body>
+</html>
