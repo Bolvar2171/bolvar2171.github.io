@@ -55,6 +55,8 @@
     border: 2px solid var(--steel); color: var(--steel);
   }
   .tag.soon { border-color: var(--fire); color: var(--fire); }
+  a.tag { text-decoration: none; }
+  a.tag:hover, a.tag:focus-visible { border-color: var(--fire); color: var(--fire); }
   .product p { margin: 0 0 10px; color: var(--muted); }
   .product ul { margin: 0; padding-left: 18px; color: var(--muted); }
   .product.text { grid-template-columns: 1fr; }
@@ -100,7 +102,7 @@
     <article class="product text">
       <div class="body">
         <h3>Procedural Motion</h3>
-        <span class="tag pixel">In development</span>
+        <a class="tag pixel" href="procedural-motion/demo/">Try the demo</a>
         <p>Spring-based motion for Unity: UI, cameras and characters that follow, overshoot and settle naturally, tuned with a live response graph in the Inspector.</p>
       </div>
     </article>
