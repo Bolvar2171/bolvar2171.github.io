@@ -56,6 +56,11 @@
   }
   .tag.soon { border-color: var(--fire); color: var(--fire); }
   a.tag { text-decoration: none; }
+  .buy {
+    display: inline-block; margin-top: 6px; padding: 10px 16px; font-size: 14px;
+    background: var(--fire); color: var(--bg); text-decoration: none; border: 2px solid var(--fire);
+  }
+  .buy:hover, .buy:focus-visible { background: transparent; color: var(--fire); }
   a.tag:hover, a.tag:focus-visible { border-color: var(--fire); color: var(--fire); }
   .product p { margin: 0 0 10px; color: var(--muted); }
   .product ul { margin: 0; padding-left: 18px; color: var(--muted); }
@@ -93,9 +98,10 @@
       <img src="img/localization-qa.png" alt="A German button label, Einstellungen und Barrierefreiheit, running out of its button, outlined in red">
       <div class="body">
         <h3>Localization QA</h3>
-        <span class="tag soon pixel">Coming soon</span>
+        <span class="tag pixel">Available now</span>
         <p>Finds the localization bugs players post screenshots of: text that won't fit its box, letters your font can't show and strings nobody translated.</p>
         <p>It checks TextMeshPro, legacy Text and UI Toolkit, reads Unity Localization string tables, and runs from the command line on build servers.</p>
+        <a class="buy pixel" href="https://u3d.as/4iiB">Get it on the Asset Store</a>
       </div>
     </article>
 
